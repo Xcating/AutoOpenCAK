@@ -2,6 +2,7 @@
 bin/
 obj/
 .idea/
+.vs/
 # Nuget packages directory
 packages/
 
@@ -80,3 +81,5 @@ ModelManifest.xml
 v15/
 
 
+/.idea/
+/.vs/
