@@ -1,8 +1,8 @@
 # Build and Object Folders
 bin/
 obj/
-.idea/
-.vs/
+/.idea/**
+/.vs/**
 # Nuget packages directory
 packages/
 
@@ -80,6 +80,3 @@ ModelManifest.xml
 #zzzili
 v15/
 
-
-/.idea/
-/.vs/
