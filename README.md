@@ -6,7 +6,7 @@
 
 # 运行效果
 
-![](https://www.ake1.com/oss/2023-05-06/227966ba.png)
+![](https://cdn.discordapp.com/attachments/1103966372825923624/1104075964528472236/image.png)
 
 
 
