@@ -1,11 +1,21 @@
 # 自动启动应用程序
 
-本项目是一个使用C#编写的自动启动应用程序的示例，可以在Windows系统上实现开机自动启动指定的应用程序。
+本项目是一个使用C#编写的自动启动应用程序,可定制化的绕过原神bypass 并且同时启动任意dll注入器 并且可同时启动3dm原神模型修改工具
+
+
+
+# 运行效果
+
+![](https://www.ake1.com/oss/2023-05-06/227966ba.png)
+
+
+
+
 
 ## 如何使用
 
-1. 克隆或下载本项目的代码到本地计算机。
-2. 待续
+1. 打开release下载[Releases · Micah123321/AutoOpenCAK --- 发布 · Micah123321/AutoOpenCAK (github.com)](https://github.com/Micah123321/AutoOpenCAK/releases)
+2. 查看使用说明运行
 
 ## 注意事项
 
