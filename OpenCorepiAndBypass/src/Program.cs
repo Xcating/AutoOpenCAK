@@ -60,14 +60,20 @@ namespace OpenCorepiAndBypass
 
 
             src.IniFile ini = new src.IniFile(@Environment.CurrentDirectory+@"\config.ini");
+            if (ini != null)
+            {
+                System.Console.WriteLine("配置文件加载成功");
+            }
 
             string genshinAccount = ini.ReadValue("Settings", "GenshinAccount");
             if (genshinAccount.Contains("true"))
             {
+                System.Console.WriteLine("已确定打开账户切换程序:请切换账号,过程将等待你五秒");
                 string genshinAccountPath = ini.ReadValue("Settings", "GenshinAccountPath");
-                Program.OpenFile(@genshinAccountPath);
-                System.Console.WriteLine("打开账户切换文件");
 
+                System.Console.WriteLine("正在读取打开对应程序,确保路径准确");
+                Program.OpenFile(@genshinAccountPath);
+                
                 // 暂停5秒
                 Thread.Sleep(5000);
             }
@@ -76,7 +82,10 @@ namespace OpenCorepiAndBypass
             string ThreeDM = ini.ReadValue("Settings", "ThreeDM");
             if (ThreeDM.Contains("true"))
             {
+                System.Console.WriteLine("已确定打开3dm模型切换工具");
                 string ThreeDMPath = ini.ReadValue("Settings", "ThreeDMPath");
+
+                System.Console.WriteLine("正在读取打开对应程序,确保路径准确");
                 Program.OpenFile(ThreeDMPath);
                 System.Console.WriteLine("打开3dm");
 
@@ -87,13 +96,16 @@ namespace OpenCorepiAndBypass
             string ByPass = ini.ReadValue("Settings", "ByPass");
             if (ByPass.Contains("true"))
             {
+                System.Console.WriteLine("已确定绕过原神反作弊");
                 string GamePath = ini.ReadValue("Settings", "GamePath");
 
-                System.Console.WriteLine("bypass");
+                System.Console.WriteLine("绕过准备完成,如读取注入器失败导致无法启动游戏,请使用修复文件修复反作弊,回车继续");
+                System.Console.Read();
 
                 Program.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak");
                 Program.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak");
                 Program.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak");
+
 
 
                 // 暂停1秒
@@ -103,12 +115,13 @@ namespace OpenCorepiAndBypass
             string Injector = ini.ReadValue("Settings", "Injector");
             if (Injector.Contains("true"))
             {
+
+                System.Console.WriteLine("已确定打开注入器");
                 string InjectorPath = ini.ReadValue("Settings", "InjectorPath");
                 Program.OpenFile(InjectorPath);
-                System.Console.WriteLine("打开注入器");
 
                 // 暂停15秒
-                System.Console.WriteLine("暂停15秒");
+                System.Console.WriteLine("暂停15秒等待注入");
                 Thread.Sleep(20000);
             }
 
@@ -130,12 +143,6 @@ namespace OpenCorepiAndBypass
             }
 
 
-            
-            //打开cb
-            System.Console.WriteLine("打开cb");
-            Program.OpenFile(@"C:\Users\Administrator\Desktop\genshinhack\Cotton Buds 3.6 - Stable.CETRAINER");
-
-
             string CB = ini.ReadValue("Settings", "CB");
             if (CB.Contains("true"))
             {
@@ -144,7 +151,6 @@ namespace OpenCorepiAndBypass
                 System.Console.WriteLine("打开CB");
 
             }
-
 
 
             System.Console.WriteLine("程序完成,回车退出");
