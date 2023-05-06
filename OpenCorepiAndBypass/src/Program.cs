@@ -1,6 +1,10 @@
-﻿using System;
+﻿using OpenCorepiAndBypass.Properties;
+using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
+using System.Reflection;
+using System.Resources;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -50,30 +54,73 @@ namespace OpenCorepiAndBypass
             return filePath;
         }
 
+        //语言控制器
+        private static ResourceManager GetResourceManager()
+        {
+            bool loop = true;
+
+            // 使用while循环来重复执行以下代码，直到loop为false
+            while (loop)
+            {
+                // 输出语言选择菜单
+                Console.WriteLine("请选择语言：| Please select a language:");
+                Console.WriteLine("1. 中文 | 1. Chinese");
+                Console.WriteLine("2. 英文 | 2. English");
+
+                // 读取用户输入的选择
+                string choice = Console.ReadLine();
+
+                // 使用switch语句来根据选择设置语言和退出循环
+                switch (choice)
+                {
+                    case "1":
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
+                        loop = false; // 设置loop为false，退出循环
+                        break;
+                    case "2":
+                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                        loop = false; // 设置loop为false，退出循环
+                        break;
+                    default:
+                        Console.WriteLine("无效选择！| Invalid selection!");
+                        break;
+                }
+            }
+
+
+            // 创建资源管理器对象
+            ResourceManager rm = new System.Resources.ResourceManager("OpenCorepiAndBypass.Properties.Strings", Assembly.GetExecutingAssembly());
+
+
+            return rm;
+        }
 
 
         static void Main(string[] args)
         {
+            ResourceManager rm = GetResourceManager();
+
+
 
             //TODO
             //判断是否存在配置文件 初始化配置待完成
 
 
-            src.IniFile ini = new src.IniFile(@Environment.CurrentDirectory+@"\config.ini");
+            src.IniFile ini = new src.IniFile(@Environment.CurrentDirectory + @"\config.ini");
             if (ini != null)
             {
-                System.Console.WriteLine("配置文件加载成功");
+                System.Console.WriteLine(rm.GetString("Conf_Success"));
             }
 
             string genshinAccount = ini.ReadValue("Settings", "GenshinAccount");
             if (genshinAccount.Contains("true"))
             {
-                System.Console.WriteLine("已确定打开账户切换程序:请切换账号,过程将等待你五秒");
+                System.Console.WriteLine(rm.GetString("Change_message"));
                 string genshinAccountPath = ini.ReadValue("Settings", "GenshinAccountPath");
 
-                System.Console.WriteLine("正在读取打开对应程序,确保路径准确");
+                System.Console.WriteLine(rm.GetString("Load_Path"));
                 Program.OpenFile(@genshinAccountPath);
-                
+
                 // 暂停5秒
                 Thread.Sleep(5000);
             }
@@ -81,7 +128,7 @@ namespace OpenCorepiAndBypass
             {
                 System.Console.WriteLine("已取消打开账号切换器");
             }
-            
+
 
             string ThreeDM = ini.ReadValue("Settings", "ThreeDM");
             if (ThreeDM.Contains("true"))
@@ -89,7 +136,7 @@ namespace OpenCorepiAndBypass
                 System.Console.WriteLine("已确定打开3dm模型切换工具");
                 string ThreeDMPath = ini.ReadValue("Settings", "ThreeDMPath");
 
-                System.Console.WriteLine("正在读取打开对应程序,确保路径准确");
+                System.Console.WriteLine(rm.GetString("Load_Path"));
                 Program.OpenFile(ThreeDMPath);
                 System.Console.WriteLine("打开3dm");
 
@@ -108,7 +155,7 @@ namespace OpenCorepiAndBypass
                 string GamePath = ini.ReadValue("Settings", "GamePath");
 
                 System.Console.WriteLine("绕过准备完成,如读取注入器失败导致无法启动游戏,请使用修复文件修复反作弊");
-                
+
 
                 Program.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak");
                 Program.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak");
@@ -133,7 +180,7 @@ namespace OpenCorepiAndBypass
                 Thread.Sleep(20000);
             }
 
-            
+
             //取消bypass
             if (ByPass.Contains("true"))
             {
@@ -166,5 +213,7 @@ namespace OpenCorepiAndBypass
             System.Console.Read();
             System.Console.Read();
         }
+
+        
     }
 }
