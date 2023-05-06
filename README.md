@@ -1,5 +1,5 @@
 # ENGLISH README.md
-
+https://github.com/Micah123321/AutoOpenCAK/blob/main/README-EN.md
 
 # 自动启动应用程序
 
