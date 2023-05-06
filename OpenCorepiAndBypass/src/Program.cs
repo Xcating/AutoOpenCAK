@@ -77,6 +77,10 @@ namespace OpenCorepiAndBypass
                 // 暂停5秒
                 Thread.Sleep(5000);
             }
+            else
+            {
+                System.Console.WriteLine("已取消打开账号切换器");
+            }
             
 
             string ThreeDM = ini.ReadValue("Settings", "ThreeDM");
@@ -92,6 +96,10 @@ namespace OpenCorepiAndBypass
                 // 暂停1秒
                 Thread.Sleep(1000);
             }
+            else
+            {
+                System.Console.WriteLine("已取消打开3dm");
+            }
 
             string ByPass = ini.ReadValue("Settings", "ByPass");
             if (ByPass.Contains("true"))
@@ -99,8 +107,8 @@ namespace OpenCorepiAndBypass
                 System.Console.WriteLine("已确定绕过原神反作弊");
                 string GamePath = ini.ReadValue("Settings", "GamePath");
 
-                System.Console.WriteLine("绕过准备完成,如读取注入器失败导致无法启动游戏,请使用修复文件修复反作弊,回车继续");
-                System.Console.Read();
+                System.Console.WriteLine("绕过准备完成,如读取注入器失败导致无法启动游戏,请使用修复文件修复反作弊");
+                
 
                 Program.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak");
                 Program.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak");
@@ -154,6 +162,8 @@ namespace OpenCorepiAndBypass
 
 
             System.Console.WriteLine("程序完成,回车退出");
+
+            System.Console.Read();
             System.Console.Read();
         }
     }
