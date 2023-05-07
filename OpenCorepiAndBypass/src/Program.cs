@@ -216,7 +216,7 @@ namespace OpenCorepiAndBypass
             //取消bypass
             if (ByPass.Contains("true"))
             {
-                string GamePath = ini.ReadValue("Settings", "GamePath")+@"\";
+                string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
 
                 Console.WriteLine(rm.GetString("Cahcoe_Bypass_Message"));
 

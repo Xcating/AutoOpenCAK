@@ -26,13 +26,14 @@ namespace OpenCorepiAndBypass.src
                 //判断如果当前文件不存在则返回
                 if (!File.Exists(oldName))
                 {
-                    
+
 
                     //判断如何oldName+.bak存在 则改为非.bak格式
                     if (File.Exists(oldName + ".bak"))
                     {
                         File.Move(oldName + ".bak", oldName);
-                    }else if (File.Exists(backupFile))//判断如果/bak/目录存在则替换到该目录
+                    }
+                    else if (File.Exists(backupFile))//判断如果/bak/目录存在则替换到该目录
                     {
                         File.Move(backupFile, oldName);
                     }
@@ -41,7 +42,7 @@ namespace OpenCorepiAndBypass.src
                         //否则抛出异常
 
                         throw new FileNotFoundException("要修改的文件不存在,文件为:" + oldName
-                            + " 请检查游戏路径是否填错,或者游戏文件缺失 | The file to be modified does not exist. The file is:" + 
+                            + " 请检查游戏路径是否填错,或者游戏文件缺失 | The file to be modified does not exist. The file is:" +
                             oldName + " Please check whether the game path is filled in incorrectly or the game file is missing");
                     }
 
@@ -109,7 +110,7 @@ namespace OpenCorepiAndBypass.src
                 // 根据用户的选择执行相应的操作
                 if (choice == 1)
                 {
-                    process.StartInfo.FileName = GetFilePath("选择要打开的文件","");
+                    process.StartInfo.FileName = GetFilePath("选择要打开的文件", "");
 
                 }
                 else
@@ -118,10 +119,10 @@ namespace OpenCorepiAndBypass.src
                     Console.ReadLine();
                     Environment.Exit(1);
                 };
-                
+
             }
 
-            
+
             // 启动Process对象
             process.Start();
         }
@@ -176,7 +177,7 @@ namespace OpenCorepiAndBypass.src
             t.SetApartmentState(ApartmentState.STA);
             t.Start();
             t.Join();
-            return folderPath+@"\";
+            return folderPath + @"\";
         }
     }
 
