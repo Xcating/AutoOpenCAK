@@ -1,4 +1,5 @@
 ﻿using OpenCorepiAndBypass.Properties;
+using OpenCorepiAndBypass.src;
 using System;
 using System.Diagnostics;
 using System.Globalization;
@@ -15,57 +16,51 @@ namespace OpenCorepiAndBypass
 
     class Program
     {
-        //改变文件名称
-        static void ChangeFileName(string oldName, string newName)
-        {
-            File.Delete(newName); // 删除已存在的文件
-            File.Move(oldName, newName); // 将旧文件名改为新文件名
-        }
+        const string VERSION = "v0.0.2";
 
-        //打开文件
-        static void OpenFile(string fileName)
-        {
-            Process process = new Process();
-            // 设置要启动的文件名，包括完整路径
-            process.StartInfo.FileName = fileName;
-            // 启动Process对象
-            process.Start();
-        }
 
-        //获取文件路径
-        static string GetFilePath(string title, string filter)
+        private static void DrawVersion()
         {
-            string filePath = "";
-            Thread t = new Thread((ThreadStart)(() =>
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.InitialDirectory = Environment.CurrentDirectory;
-                openFileDialog.Filter = filter;
-                openFileDialog.Title = title;
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    filePath = openFileDialog.FileName;
-                }
-            }
-            ));
-            t.SetApartmentState(ApartmentState.STA);
-            t.Start();
-            t.Join();
-            return filePath;
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("╔══════════════════════════════════════════════════════════╗");
+            Console.WriteLine("║                        AutoOpenCAK                       ║");
+            Console.WriteLine("║                                                          ║");
+            Console.Write("║                 ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write(VERSION);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write(" : ");
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.Write("原神");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write(",");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Write("启动");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("!!!!");
+            Console.WriteLine("                   ║");
+            Console.WriteLine("║                                                          ║");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
+            Console.ResetColor();
         }
 
         //语言控制器
         private static ResourceManager GetResourceManager()
         {
+
             bool loop = true;
 
             // 使用while循环来重复执行以下代码，直到loop为false
             while (loop)
             {
                 // 输出语言选择菜单
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("请选择语言：| Please select a language:");
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("1. 中文 | 1. Chinese");
                 Console.WriteLine("2. 英文 | 2. English");
+                Console.ResetColor();
 
                 // 读取用户输入的选择
                 string choice = Console.ReadLine();
@@ -98,85 +93,88 @@ namespace OpenCorepiAndBypass
 
         static void Main(string[] args)
         {
+            DrawVersion();
+
             ResourceManager rm = GetResourceManager();
-
-
 
             //TODO
             //判断是否存在配置文件 初始化配置待完成
 
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
 
-            src.IniFile ini = new src.IniFile(@Environment.CurrentDirectory + @"\config.ini");
+            IniFile ini = new IniFile(@Environment.CurrentDirectory + @"\config.ini");
             if (ini != null)
             {
-                System.Console.WriteLine(rm.GetString("Conf_Success"));
+                Console.WriteLine(rm.GetString("Conf_Success"));
             }
 
             string genshinAccount = ini.ReadValue("Settings", "GenshinAccount");
             if (genshinAccount.Contains("true"))
             {
-                System.Console.WriteLine(rm.GetString("Change_message"));
+                Console.WriteLine(rm.GetString("Change_message"));
                 string genshinAccountPath = ini.ReadValue("Settings", "GenshinAccountPath");
 
-                System.Console.WriteLine(rm.GetString("Load_Path"));
-                Program.OpenFile(@genshinAccountPath);
+                Console.WriteLine(rm.GetString("Load_Path"));
 
-                // 暂停5秒
+                FileUtils.OpenFile(@genshinAccountPath);
+
                 Thread.Sleep(5000);
+                Console.WriteLine("");
             }
             else
             {
-                System.Console.WriteLine("已取消打开账号切换器");
+                Console.WriteLine(rm.GetString("Cancle_Open") + rm.GetString("AccountSwitcher"));
             }
 
 
             string ThreeDM = ini.ReadValue("Settings", "ThreeDM");
             if (ThreeDM.Contains("true"))
             {
-                System.Console.WriteLine("已确定打开3dm模型切换工具");
+                Console.WriteLine(rm.GetString("Open_Agree") + "3dm");
                 string ThreeDMPath = ini.ReadValue("Settings", "ThreeDMPath");
 
-                System.Console.WriteLine(rm.GetString("Load_Path"));
-                Program.OpenFile(ThreeDMPath);
-                System.Console.WriteLine("打开3dm");
+                Console.WriteLine(rm.GetString("Load_Path"));
+                FileUtils.OpenFile(ThreeDMPath);
 
                 // 暂停1秒
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
+                Console.WriteLine("");
             }
             else
             {
-                System.Console.WriteLine("已取消打开3dm");
+                Console.WriteLine(rm.GetString("Cancle_Open") + "3dm");
             }
 
             string ByPass = ini.ReadValue("Settings", "ByPass");
             if (ByPass.Contains("true"))
             {
-                System.Console.WriteLine("已确定绕过原神反作弊");
+                Console.WriteLine(rm.GetString("Open_Agree") + rm.GetString("Bypass_Name"));
                 string GamePath = ini.ReadValue("Settings", "GamePath");
 
-                System.Console.WriteLine("绕过准备完成,如读取注入器失败导致无法启动游戏,请使用修复文件修复反作弊");
+                Console.WriteLine(rm.GetString("Bypass_Message"));
 
 
-                Program.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak");
-                Program.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak");
-                Program.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak");
+                FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak");
+                FileUtils.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak");
+                FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak");
 
 
 
                 // 暂停1秒
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
+                Console.WriteLine("");
             }
 
             string Injector = ini.ReadValue("Settings", "Injector");
             if (Injector.Contains("true"))
             {
 
-                System.Console.WriteLine("已确定打开注入器");
+                Console.WriteLine(rm.GetString("Open_Agree") + rm.GetString("Injector"));
                 string InjectorPath = ini.ReadValue("Settings", "InjectorPath");
-                Program.OpenFile(InjectorPath);
+                FileUtils.OpenFile(InjectorPath);
 
                 // 暂停15秒
-                System.Console.WriteLine("暂停15秒等待注入");
+                Console.WriteLine(rm.GetString("Wait_Injector_Time"));
                 Thread.Sleep(20000);
             }
 
@@ -186,15 +184,16 @@ namespace OpenCorepiAndBypass
             {
                 string GamePath = ini.ReadValue("Settings", "GamePath");
 
-                System.Console.WriteLine("取消bypass");
+                Console.WriteLine(rm.GetString("Cahcoe_Bypass_Message"));
 
-                Program.ChangeFileName(@GamePath + "HoYoKProtect.sys.bak", @GamePath + "HoYoKProtect.sys");
-                Program.ChangeFileName(@GamePath + "mhypbase.dll.bak", @GamePath + "mhypbase.dll");
-                Program.ChangeFileName(@GamePath + "mhyprot3.Sys.bak", @GamePath + "mhyprot3.Sys");
+                FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys.bak", @GamePath + "HoYoKProtect.sys");
+                FileUtils.ChangeFileName(@GamePath + "mhypbase.dll.bak", @GamePath + "mhypbase.dll");
+                FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys.bak", @GamePath + "mhyprot3.Sys");
 
 
                 // 暂停1秒
-                Thread.Sleep(1000);
+                Thread.Sleep(2000);
+                Console.WriteLine("");
             }
 
 
@@ -202,18 +201,18 @@ namespace OpenCorepiAndBypass
             if (CB.Contains("true"))
             {
                 string CBPath = ini.ReadValue("Settings", "CBPath");
-                Program.OpenFile(CBPath);
-                System.Console.WriteLine("打开CB");
+                FileUtils.OpenFile(CBPath);
+                Console.WriteLine(rm.GetString("Open_Agree") + "CB");
 
             }
 
 
-            System.Console.WriteLine("程序完成,回车退出");
+            Console.WriteLine(rm.GetString("Exit_Message"));
 
-            System.Console.Read();
-            System.Console.Read();
+            Console.Read();
+            Console.Read();
         }
 
-        
+
     }
 }

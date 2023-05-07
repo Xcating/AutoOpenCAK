@@ -117,6 +117,21 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountSwitcher" xml:space="preserve">
+    <value>账号切换器</value>
+  </data>
+  <data name="Bypass_Message" xml:space="preserve">
+    <value>绕过准备完成,如读取注入器失败导致无法启动游戏,请使用修复文件修复反作弊</value>
+  </data>
+  <data name="Bypass_Name" xml:space="preserve">
+    <value>绕过原神反作弊服务</value>
+  </data>
+  <data name="Cahcoe_Bypass_Message" xml:space="preserve">
+    <value>修复反作弊文件,防止进门失败</value>
+  </data>
+  <data name="Cancle_Open" xml:space="preserve">
+    <value>已取消打开</value>
+  </data>
   <data name="Change_message" xml:space="preserve">
     <value>已确定打开账户切换程序:请切换账号,过程将等待你五秒</value>
   </data>
@@ -129,9 +144,15 @@
   <data name="Conf_Success" xml:space="preserve">
     <value>配置文件加载成功</value>
   </data>
+  <data name="Exit_Message" xml:space="preserve">
+    <value>程序完成,回车退出</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>你好，世界！</value>
     <comment>Chinese</comment>
+  </data>
+  <data name="Injector" xml:space="preserve">
+    <value>注入器</value>
   </data>
   <data name="Load_Path" xml:space="preserve">
     <value>正在读取打开对应程序,确保路径准确</value>
@@ -139,5 +160,11 @@
   <data name="Name" xml:space="preserve">
     <value>我的名字是</value>
     <comment>Chinese</comment>
+  </data>
+  <data name="Open_Agree" xml:space="preserve">
+    <value>已确定打开</value>
+  </data>
+  <data name="Wait_Injector_Time" xml:space="preserve">
+    <value>等待15秒用于注入</value>
   </data>
 </root>

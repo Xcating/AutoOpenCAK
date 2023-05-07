@@ -1,23 +1,28 @@
-# ENGLISH README.md
-https://github.com/Micah123321/AutoOpenCAK/blob/main/README-EN.md
+# English README
+
+[English version](https://github.com/Micah123321/AutoOpenCAK/blob/main/README-EN.md)
 
 # 自动启动应用程序
 
 本项目是一个使用C#编写的自动启动应用程序,可定制化的绕过原神hoyoprot 并且同时启动任意dll注入器 并且可同时启动3dm原神模型修改工具以及ce修改
 
+# 编写初衷
 
+- 由 **Strigger** 编写的 **Cotton Buds** 因为是ct表构成的结构 无法完成如:地图传送 内置米哈游小地图等功能
+- 而 **korepi** 项目因为部分代码缺失导致无法使用剧情加速,杀戮光环等功能
+- 使用本程序能在开启 **korepi** 项目的同时过掉验证同时开启 **Cotton Buds**
+- 做到不输于 **AKEBI** 的游戏体验
+
+# 用途
+- 执行配置好,就可以做到一键运行账号切换器 任意注入方式启动器 过检测的方式启动原神
 
 # 运行效果
 
 ![](https://cdn.discordapp.com/attachments/1103966372825923624/1104075964528472236/image.png)
 
-
-
-
-
 ## 如何使用
 
-1. 打开release下载[Releases · Micah123321/AutoOpenCAK --- 发布 · Micah123321/AutoOpenCAK (github.com)](https://github.com/Micah123321/AutoOpenCAK/releases)
+1. 打开release下载最新版本[Releases](https://github.com/Micah123321/AutoOpenCAK/releases)
 2. 查看使用说明运行
 
 ## 注意事项

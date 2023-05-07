@@ -117,12 +117,54 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountSwitcher" xml:space="preserve">
+    <value>Account switcher </value>
+  </data>
+  <data name="Bypass_Message" xml:space="preserve">
+    <value>Bypass preparation is complete, if the game cannot be started due to failure to read the injector, please use the repair file to fix the anti-cheat</value>
+  </data>
+  <data name="Bypass_Name" xml:space="preserve">
+    <value>Bypass the original God anti-cheat service</value>
+  </data>
+  <data name="Cahcoe_Bypass_Message" xml:space="preserve">
+    <value>Fixed anti - cheating file to prevent entry failure</value>
+  </data>
+  <data name="Cancle_Open" xml:space="preserve">
+    <value>unopened </value>
+  </data>
+  <data name="Change_message" xml:space="preserve">
+    <value>Have confirmed to open the account switching program: please switch the account, the process will wait for you five seconds</value>
+  </data>
+  <data name="Conf_Path_CanceledOpenAccountSwitcher" xml:space="preserve">
+    <value>Enabling the account switcher has been cancelled</value>
+  </data>
+  <data name="Conf_Path_Opened3dmModelSwitcher" xml:space="preserve">
+    <value>The 3dm model switching tool is confirmed to be open</value>
+  </data>
+  <data name="Conf_Success" xml:space="preserve">
+    <value>The configuration file is successfully loaded. Procedure</value>
+  </data>
+  <data name="Exit_Message" xml:space="preserve">
+    <value>When the program is finished, press Enter to exit</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>Hello, world!</value>
-    <comment>English</comment>
+    <comment>Chinese</comment>
+  </data>
+  <data name="Injector" xml:space="preserve">
+    <value>injector</value>
+  </data>
+  <data name="Load_Path" xml:space="preserve">
+    <value>Reading open corresponding program, make sure the path is accurate</value>
   </data>
   <data name="Name" xml:space="preserve">
     <value>My name is</value>
-    <comment>English</comment>
+    <comment>Chinese</comment>
+  </data>
+  <data name="Open_Agree" xml:space="preserve">
+    <value>Confirmed open</value>
+  </data>
+  <data name="Wait_Injector_Time" xml:space="preserve">
+    <value>Wait 15 seconds for injection</value>
   </data>
 </root>
