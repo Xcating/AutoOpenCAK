@@ -22,12 +22,22 @@ namespace OpenCorepiAndBypass.src
         {
             path = INIPath;
         }
-
+        /// <summary>
+        /// 写ini文件值
+        /// </summary>
+        /// <param name="Section">所属区域</param>
+        /// <param name="Key">k</param>
+        /// <param name="Value">v</param>
         public void WriteValue(string Section, string Key, string Value)
         {
             WritePrivateProfileString(Section, Key, Value, this.path);
         }
-
+        /// <summary>
+        /// 读ini文件值
+        /// </summary>
+        /// <param name="Section">区域</param>
+        /// <param name="Key">k</param>
+        /// <returns>v</returns>
         public string ReadValue(string Section, string Key)
         {
             StringBuilder temp = new StringBuilder(255);

@@ -18,7 +18,9 @@ namespace OpenCorepiAndBypass
     {
         const string VERSION = "v0.0.2";
 
-
+        /// <summary>
+        /// 绘制版本启动
+        /// </summary>
         private static void DrawVersion()
         {
             Console.ForegroundColor = ConsoleColor.Magenta;
@@ -45,7 +47,10 @@ namespace OpenCorepiAndBypass
             Console.ResetColor();
         }
 
-        //语言控制器
+        /// <summary>
+        /// 获取资源管理器
+        /// </summary>
+        /// <returns>资源管理器</returns>
         private static ResourceManager GetResourceManager()
         {
 
@@ -101,13 +106,13 @@ namespace OpenCorepiAndBypass
             //判断是否存在配置文件 初始化配置待完成
 
             Console.ForegroundColor = ConsoleColor.DarkGreen;
-
+            //读取配置文件
             IniFile ini = new IniFile(@Environment.CurrentDirectory + @"\config.ini");
             if (ini != null)
             {
                 Console.WriteLine(rm.GetString("Conf_Success"));
             }
-
+            //账号切换器
             string genshinAccount = ini.ReadValue("Settings", "GenshinAccount");
             if (genshinAccount.Contains("true"))
             {
@@ -126,7 +131,7 @@ namespace OpenCorepiAndBypass
                 Console.WriteLine(rm.GetString("Cancle_Open") + rm.GetString("AccountSwitcher"));
             }
 
-
+            //3dm
             string ThreeDM = ini.ReadValue("Settings", "ThreeDM");
             if (ThreeDM.Contains("true"))
             {
@@ -145,6 +150,7 @@ namespace OpenCorepiAndBypass
                 Console.WriteLine(rm.GetString("Cancle_Open") + "3dm");
             }
 
+            //执行过检测
             string ByPass = ini.ReadValue("Settings", "ByPass");
             if (ByPass.Contains("true"))
             {
@@ -164,6 +170,8 @@ namespace OpenCorepiAndBypass
                 Thread.Sleep(2000);
                 Console.WriteLine("");
             }
+
+            //执行注入
 
             string Injector = ini.ReadValue("Settings", "Injector");
             if (Injector.Contains("true"))
@@ -196,7 +204,7 @@ namespace OpenCorepiAndBypass
                 Console.WriteLine("");
             }
 
-
+            //CB运行
             string CB = ini.ReadValue("Settings", "CB");
             if (CB.Contains("true"))
             {

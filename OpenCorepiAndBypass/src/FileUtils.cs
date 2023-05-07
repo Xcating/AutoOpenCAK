@@ -8,14 +8,21 @@ namespace OpenCorepiAndBypass.src
 {
     class FileUtils
     {
-        //改变文件名称
+        /// <summary>
+        /// 改变文件名称
+        /// </summary>
+        /// <param name="oldName">旧的名称</param>
+        /// <param name="newName">新的名称</param>
          public static void ChangeFileName(string oldName, string newName)
         {
             File.Delete(newName); // 删除已存在的文件
             File.Move(oldName, newName); // 将旧文件名改为新文件名
         }
 
-        //打开文件
+        /// <summary>
+        /// 打开文件
+        /// </summary>
+        /// <param name="fileName">文件路径名称</param>
         public static void OpenFile(string fileName)
         {
             Process process = new Process();
@@ -25,7 +32,12 @@ namespace OpenCorepiAndBypass.src
             process.Start();
         }
 
-        //获取文件路径
+        /// <summary>
+        /// 换取文件路径
+        /// </summary>
+        /// <param name="title">打开窗口的标题</param>
+        /// <param name="filter">过滤器文本</param>
+        /// <returns></returns>
         public static string GetFilePath(string title, string filter)
         {
             string filePath = "";
