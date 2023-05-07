@@ -30,7 +30,14 @@ namespace OpenCorepiAndBypass.src
         /// <param name="Value">v</param>
         public void WriteValue(string Section, string Key, string Value)
         {
-            WritePrivateProfileString(Section, Key, Value, this.path);
+            try
+            {
+                WritePrivateProfileString(Section, Key, Value, path);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("无法写入 INI 文件。", ex);
+            }
         }
         /// <summary>
         /// 读ini文件值
@@ -40,8 +47,13 @@ namespace OpenCorepiAndBypass.src
         /// <returns>v</returns>
         public string ReadValue(string Section, string Key)
         {
+            if (!File.Exists(path))
+            {
+                return "";
+            }
+
             StringBuilder temp = new StringBuilder(255);
-            int i = GetPrivateProfileString(Section, Key, "", temp, 255, this.path);
+            int i = GetPrivateProfileString(Section, Key, "", temp, 255, path);
             return temp.ToString();
         }
     }
