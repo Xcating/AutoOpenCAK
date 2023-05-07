@@ -16,7 +16,7 @@ namespace OpenCorepiAndBypass
 
     class Program
     {
-        const string VERSION = "v0.0.2";
+        const string VERSION = "v0.0.3";
 
         /// <summary>
         /// 绘制版本启动
@@ -124,12 +124,13 @@ namespace OpenCorepiAndBypass
                 FileUtils.OpenFile(@genshinAccountPath);
 
                 Thread.Sleep(5000);
-                Console.WriteLine("");
             }
             else
             {
                 Console.WriteLine(rm.GetString("Cancle_Open") + rm.GetString("AccountSwitcher"));
             }
+
+            Console.WriteLine("");
 
             //3dm
             string ThreeDM = ini.ReadValue("Settings", "ThreeDM");
@@ -143,34 +144,59 @@ namespace OpenCorepiAndBypass
 
                 // 暂停1秒
                 Thread.Sleep(2000);
-                Console.WriteLine("");
             }
             else
             {
                 Console.WriteLine(rm.GetString("Cancle_Open") + "3dm");
             }
 
+            Console.WriteLine("");
+
+
             //执行过检测
             string ByPass = ini.ReadValue("Settings", "ByPass");
             if (ByPass.Contains("true"))
             {
                 Console.WriteLine(rm.GetString("Open_Agree") + rm.GetString("Bypass_Name"));
-                string GamePath = ini.ReadValue("Settings", "GamePath");
+
+
+                string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
+                Console.WriteLine(GamePath);
+
+
+                //判断文件夹是否存在,不存在报错并且重新选择
+                if (!Directory.Exists(GamePath))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("游戏路径不存在，请重新选择路径。");
+                    // 重新选择路径的代码
+                    GamePath = FileUtils.GetFolderPath("选择游戏路径文件夹,选错可能导致游戏无法运行 文件夹名称为:Genshin Impact Game");
+                    if (GamePath.Length <= 3)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("选择的路径长度不对");
+                        Console.Read();
+                        Environment.Exit(1);
+                    }
+                }
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
 
                 Console.WriteLine(rm.GetString("Bypass_Message"));
+                Console.WriteLine("");
+                Console.WriteLine(rm.GetString("HoYoKProtect_no_exist"));
 
 
-                FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak");
-                FileUtils.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak");
-                FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak");
+                FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak", "HoYoKProtect.sys");
+                FileUtils.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak", "mhypbase.dll");
+                FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak", "mhyprot3.Sys");
 
 
 
                 // 暂停1秒
                 Thread.Sleep(2000);
-                Console.WriteLine("");
-            }
 
+            }
+            Console.WriteLine("");
             //执行注入
 
             string Injector = ini.ReadValue("Settings", "Injector");
@@ -190,13 +216,13 @@ namespace OpenCorepiAndBypass
             //取消bypass
             if (ByPass.Contains("true"))
             {
-                string GamePath = ini.ReadValue("Settings", "GamePath");
+                string GamePath = ini.ReadValue("Settings", "GamePath")+@"\";
 
                 Console.WriteLine(rm.GetString("Cahcoe_Bypass_Message"));
 
-                FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys.bak", @GamePath + "HoYoKProtect.sys");
-                FileUtils.ChangeFileName(@GamePath + "mhypbase.dll.bak", @GamePath + "mhypbase.dll");
-                FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys.bak", @GamePath + "mhyprot3.Sys");
+                FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys.bak", @GamePath + "HoYoKProtect.sys", "HoYoKProtect.sys.bak");
+                FileUtils.ChangeFileName(@GamePath + "mhypbase.dll.bak", @GamePath + "mhypbase.dll", "mhypbase.dll.bak");
+                FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys.bak", @GamePath + "mhyprot3.Sys", "mhyprot3.Sys.bak");
 
 
                 // 暂停1秒
@@ -214,6 +240,9 @@ namespace OpenCorepiAndBypass
 
             }
 
+            Console.WriteLine("");
+
+            Console.ForegroundColor = ConsoleColor.Red;
 
             Console.WriteLine(rm.GetString("Exit_Message"));
 

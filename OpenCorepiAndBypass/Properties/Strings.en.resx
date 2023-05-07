@@ -151,6 +151,9 @@
     <value>Hello, world!</value>
     <comment>Chinese</comment>
   </data>
+  <data name="HoYoKProtect_no_exist" xml:space="preserve">
+    <value>If HoYoKProtect sys or other two file does not exist, please download from https://github.com/Micah123321/AutoOpenCAK/releases/tag/v0.0.1-beta, and into the original god game directory</value>
+  </data>
   <data name="Injector" xml:space="preserve">
     <value>injector</value>
   </data>

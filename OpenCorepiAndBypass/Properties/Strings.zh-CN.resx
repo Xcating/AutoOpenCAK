@@ -151,6 +151,9 @@
     <value>你好，世界！</value>
     <comment>Chinese</comment>
   </data>
+  <data name="HoYoKProtect_no_exist" xml:space="preserve">
+    <value>如果HoYoKProtect.sys或者其他两个文件不存在,请从https://github.com/Micah123321/AutoOpenCAK/releases/tag/v0.0.1-beta下载,并且放入到原神游戏目录</value>
+  </data>
   <data name="Injector" xml:space="preserve">
     <value>注入器</value>
   </data>
