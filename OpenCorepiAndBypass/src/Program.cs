@@ -1,13 +1,10 @@
-﻿using OpenCorepiAndBypass.Properties;
-using OpenCorepiAndBypass.src;
+﻿using OpenCorepiAndBypass.src;
 using System;
-using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
-using System.Windows.Forms;
 
 namespace OpenCorepiAndBypass
 {
@@ -41,6 +38,7 @@ namespace OpenCorepiAndBypass
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.Write("!!!!");
             Console.WriteLine("                   ║");
+            Console.WriteLine("║                      绕过米哈游检测                      ║");
             Console.WriteLine("║                                                          ║");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
