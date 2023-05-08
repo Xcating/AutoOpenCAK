@@ -7,7 +7,7 @@
 本项目是一个使用C#编写的自动启动应用程序,可定制化的绕过原神hoyoprot 并且同时启动任意dll注入器 并且可同时启动3dm原神模型修改工具以及ce修改
 
 # 运行效果
-![image](https://user-images.githubusercontent.com/76832465/236787050-14b6c86f-5ea8-4ffb-8fa6-eb76d1685b8c.png)
+![image](https://user-images.githubusercontent.com/76832465/236788391-98559835-a629-48e7-923b-ccdccf39f685.png)
 
 # 编写初衷
 
@@ -23,8 +23,8 @@
 ## 如何使用
 
 1. 打开release下载最新版本[Releases](https://github.com/Micah123321/AutoOpenCAK/releases)
-2. 查看使用说明运行
-3. 想要愉悦的使用本工具,最理想的情况是同拥有GenshinAccount.exe(账号切换工具) 3dm(模型修改工具)  **korepi** 以及**Cotton Buds**
+2. 想要愉悦的使用本工具,最理想的情况是同拥有GenshinAccount.exe(账号切换工具) 3dm(模型修改工具)  **korepi** 以及**Cotton Buds**
+3. 请根据自己的情况配置config.ini
 
 ## 注意事项
 
