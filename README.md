@@ -1,3 +1,12 @@
+<!-- TOC -->
+* [English README](#english-readme)
+* [自动启动应用程序](#自动启动应用程序)
+* [运行效果](#运行效果)
+* [编写初衷](#编写初衷)
+* [用途](#用途)
+  * [如何使用](#如何使用)
+  * [注意事项](#注意事项)
+<!-- TOC -->
 # English README
 
 [English version](https://github.com/Micah123321/AutoOpenCAK/blob/main/README-EN.md)
@@ -24,8 +33,8 @@
 
 1. 打开release下载最新版本[Releases](https://github.com/Micah123321/AutoOpenCAK/releases)
 2. 想要愉悦的使用本工具,最理想的情况是同拥有GenshinAccount.exe(账号切换工具) 3dm(模型修改工具)  **korepi** 以及**Cotton Buds**
-3. 请根据自己的情况配置config.ini
-
+3. 请根据自己的情况配置config.ini![](https://www.ake1.com/mkoss/2023-05-08/13583df7.png)
+4. 对应的工具请自行寻找
 ## 注意事项
 
 - 如果启动3dm执行程序导致闪退 请开启独显直连 可能是驱动导致无法兼容启动
