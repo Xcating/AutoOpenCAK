@@ -145,7 +145,7 @@
     <value>The configuration file is successfully loaded. Procedure</value>
   </data>
   <data name="Exit_Message" xml:space="preserve">
-    <value>When the program is finished, press Enter to exit</value>
+    <value>When the program is finished, press Enter to exit,If there is a bug or any problem can be sent to github issue feedback</value>
   </data>
   <data name="Game_Path_Error" xml:space="preserve">
     <value>Game path does not exist, please choose a new path.</value>
@@ -175,6 +175,6 @@
     <value>Confirmed open</value>
   </data>
   <data name="Wait_Injector_Time" xml:space="preserve">
-    <value>Wait 15 seconds for injection</value>
+    <value>Wait 15 seconds for injection. Please do not close the application. As a result, the game cannot be started or the Internet cannot be connected</value>
   </data>
 </root>

@@ -58,14 +58,17 @@ namespace OpenCorepiAndBypass.src
 
             //将要修改的名称备份到运行目录下的/bak/文件名称
 
-
             if (!Directory.Exists(backupDir))
             {
                 Directory.CreateDirectory(backupDir);
             }
 
+            //如果文件名称不包含.bak,则备份
+            if (!fileName.EndsWith(".bak"))
+            {
+                File.Copy(oldName, backupFile, true);
+            }
 
-            File.Copy(oldName, backupFile, true);
 
             // 将旧文件名改为新文件名
             File.Move(oldName, newName);

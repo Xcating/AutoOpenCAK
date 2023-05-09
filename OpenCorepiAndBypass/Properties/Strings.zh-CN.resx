@@ -145,7 +145,7 @@
     <value>配置文件加载成功</value>
   </data>
   <data name="Exit_Message" xml:space="preserve">
-    <value>程序完成,回车退出</value>
+    <value>程序完成,回车退出,如果存在bug或者什么问题可以到github的issue反馈</value>
   </data>
   <data name="Game_Path_Error" xml:space="preserve">
     <value>游戏路径不存在，请重新选择路径。</value>
@@ -175,6 +175,6 @@
     <value>已确定打开</value>
   </data>
   <data name="Wait_Injector_Time" xml:space="preserve">
-    <value>等待15秒用于注入</value>
+    <value>等待15秒用于注入,请不要关闭该应用,可能会导致无法开启游戏或者无法联网</value>
   </data>
 </root>

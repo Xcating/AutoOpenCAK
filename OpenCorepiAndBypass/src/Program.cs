@@ -39,6 +39,8 @@ namespace OpenCorepiAndBypass
             Console.Write("!!!!");
             Console.WriteLine("                   ║");
             Console.WriteLine("║                      绕过米哈游检测                      ║");
+            Console.WriteLine("║                请确定你已经配置好config.ini              ║");
+            Console.WriteLine("║                       路径只支持英文                     ║");
             Console.WriteLine("║                                                          ║");
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
@@ -96,13 +98,13 @@ namespace OpenCorepiAndBypass
 
         static void Main(string[] args)
         {
+            //绘制版本消息
             DrawVersion();
 
+            //获取资源管理器
             ResourceManager rm = GetResourceManager();
 
-            //TODO
-            //判断是否存在配置文件 初始化配置待完成
-
+            //判断是否存在配置文件
             Console.ForegroundColor = ConsoleColor.DarkGreen;
             //读取配置文件
             IniFile ini = new IniFile(@Environment.CurrentDirectory + @"\config.ini");
@@ -183,10 +185,24 @@ namespace OpenCorepiAndBypass
                 Console.WriteLine("");
                 Console.WriteLine(rm.GetString("HoYoKProtect_no_exist"));
 
-
+                //绕过保护进程
                 FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys", @GamePath + "HoYoKProtect.sys.bak", "HoYoKProtect.sys");
                 FileUtils.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak", "mhypbase.dll");
                 FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak", "mhyprot3.Sys");
+
+                //处理上传错误程序
+                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "blueReporter.exe",
+                    @GamePath + @"\YuanShen_Data\" + "blueReporter.exe.bak",
+                    "blueReporter.exe");
+
+                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "upload_crash.exe",
+                    @GamePath + @"\YuanShen_Data\" + "upload_crash.exe.bak",
+                    "upload_crash.exe");
+
+                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe",
+                    @GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe.bak",
+                    "crashreport.exe");
+
 
                 //断开网络
                 InternetUtil.OffInternet();
@@ -212,7 +228,7 @@ namespace OpenCorepiAndBypass
             }
 
 
-            //取消bypass
+            //恢复文件操作
             if (ByPass.Contains("true"))
             {
                 string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
@@ -222,6 +238,21 @@ namespace OpenCorepiAndBypass
                 FileUtils.ChangeFileName(@GamePath + "HoYoKProtect.sys.bak", @GamePath + "HoYoKProtect.sys", "HoYoKProtect.sys.bak");
                 FileUtils.ChangeFileName(@GamePath + "mhypbase.dll.bak", @GamePath + "mhypbase.dll", "mhypbase.dll.bak");
                 FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys.bak", @GamePath + "mhyprot3.Sys", "mhyprot3.Sys.bak");
+
+
+
+                //处理上传错误程序
+                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "blueReporter.exe.bak",
+                    @GamePath + @"\YuanShen_Data\" + "blueReporter.exe",
+                    "blueReporter.exe.bak");
+
+                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "upload_crash.exe.bak",
+                    @GamePath + @"\YuanShen_Data\" + "upload_crash.exe",
+                    "upload_crash.exe.bak");
+
+                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe.bak",
+                    @GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe",
+                    "crashreport.exe.bak");
 
                 //开启网络
                 InternetUtil.OpenInternet();
