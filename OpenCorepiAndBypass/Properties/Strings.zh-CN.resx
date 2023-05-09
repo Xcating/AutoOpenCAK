@@ -147,9 +147,17 @@
   <data name="Exit_Message" xml:space="preserve">
     <value>程序完成,回车退出</value>
   </data>
+  <data name="Game_Path_Error" xml:space="preserve">
+    <value>游戏路径不存在，请重新选择路径。</value>
+  </data>
+  <data name="Game_Path_Length_Error" xml:space="preserve">
+    <value>选择的路径长度不对</value>
+  </data>
+  <data name="Game_Path_Select_Info" xml:space="preserve">
+    <value>选择游戏路径文件夹,选错可能导致游戏无法运行 文件夹名称为:Genshin Impact Game</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>你好，世界！</value>
-    <comment>Chinese</comment>
   </data>
   <data name="HoYoKProtect_no_exist" xml:space="preserve">
     <value>如果HoYoKProtect.sys或者其他两个文件不存在,请从https://github.com/Micah123321/AutoOpenCAK/releases/tag/v0.0.1-beta下载,并且放入到原神游戏目录</value>
@@ -162,7 +170,6 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>我的名字是</value>
-    <comment>Chinese</comment>
   </data>
   <data name="Open_Agree" xml:space="preserve">
     <value>已确定打开</value>

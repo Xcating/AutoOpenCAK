@@ -147,9 +147,17 @@
   <data name="Exit_Message" xml:space="preserve">
     <value>When the program is finished, press Enter to exit</value>
   </data>
+  <data name="Game_Path_Error" xml:space="preserve">
+    <value>Game path does not exist, please choose a new path.</value>
+  </data>
+  <data name="Game_Path_Length_Error" xml:space="preserve">
+    <value>The selected path length is incorrect</value>
+  </data>
+  <data name="Game_Path_Select_Info" xml:space="preserve">
+    <value>Select the Game path folder, incorrect selection may cause the game to not run folder name :Genshin Impact Game</value>
+  </data>
   <data name="Hello" xml:space="preserve">
     <value>Hello, world!</value>
-    <comment>Chinese</comment>
   </data>
   <data name="HoYoKProtect_no_exist" xml:space="preserve">
     <value>If HoYoKProtect sys or other two file does not exist, please download from https://github.com/Micah123321/AutoOpenCAK/releases/tag/v0.0.1-beta, and into the original god game directory</value>
@@ -162,7 +170,6 @@
   </data>
   <data name="Name" xml:space="preserve">
     <value>My name is</value>
-    <comment>Chinese</comment>
   </data>
   <data name="Open_Agree" xml:space="preserve">
     <value>Confirmed open</value>

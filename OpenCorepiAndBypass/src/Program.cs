@@ -13,7 +13,7 @@ namespace OpenCorepiAndBypass
 
     class Program
     {
-        const string VERSION = "v0.0.3";
+        const string VERSION = "v0.0.4";
 
         /// <summary>
         /// 绘制版本启动
@@ -166,13 +166,13 @@ namespace OpenCorepiAndBypass
                 if (!Directory.Exists(GamePath))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("游戏路径不存在，请重新选择路径。");
+                    Console.WriteLine(rm.GetString("Game_Path_Error"));
                     // 重新选择路径的代码
-                    GamePath = FileUtils.GetFolderPath("选择游戏路径文件夹,选错可能导致游戏无法运行 文件夹名称为:Genshin Impact Game");
+                    GamePath = FileUtils.GetFolderPath(rm.GetString("Game_Path_Select_Info"));
                     if (GamePath.Length <= 3)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("选择的路径长度不对");
+                        Console.WriteLine(rm.GetString("Game_Path_Length_Error"));
                         Console.Read();
                         Environment.Exit(1);
                     }
@@ -188,6 +188,8 @@ namespace OpenCorepiAndBypass
                 FileUtils.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak", "mhypbase.dll");
                 FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak", "mhyprot3.Sys");
 
+                //断开网络
+                InternetUtil.OffInternet();
 
 
                 // 暂停1秒
@@ -200,7 +202,6 @@ namespace OpenCorepiAndBypass
             string Injector = ini.ReadValue("Settings", "Injector");
             if (Injector.Contains("true"))
             {
-
                 Console.WriteLine(rm.GetString("Open_Agree") + rm.GetString("Injector"));
                 string InjectorPath = ini.ReadValue("Settings", "InjectorPath");
                 FileUtils.OpenFile(InjectorPath);
@@ -222,6 +223,8 @@ namespace OpenCorepiAndBypass
                 FileUtils.ChangeFileName(@GamePath + "mhypbase.dll.bak", @GamePath + "mhypbase.dll", "mhypbase.dll.bak");
                 FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys.bak", @GamePath + "mhyprot3.Sys", "mhyprot3.Sys.bak");
 
+                //开启网络
+                InternetUtil.OpenInternet();
 
                 // 暂停1秒
                 Thread.Sleep(2000);

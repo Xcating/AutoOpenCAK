@@ -93,29 +93,29 @@ namespace OpenCorepiAndBypass.src
             catch (FileNotFoundException ex)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("发生异常：" + ex.Message);
+                Console.WriteLine("发生异常：| An exception occurs:" + ex.Message);
                 /*Environment.Exit(1);*/
                 //手动选择路径 
                 Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.WriteLine("");
-                Console.WriteLine("是否手动选择路径：1)yes 2)no");
+                Console.WriteLine("是否手动选择路径：1)是 2)否 |  Whether to manually select a path: 1)yes 2)no");
                 string input = Console.ReadLine();
                 int choice;
                 if (!int.TryParse(input, out choice) || (choice != 1 && choice != 2))
                 {
-                    Console.WriteLine("无效的选择。");
+                    Console.WriteLine("无效选择 | Invalid choice。");
                     Environment.Exit(1);
                 }
 
                 // 根据用户的选择执行相应的操作
                 if (choice == 1)
                 {
-                    process.StartInfo.FileName = GetFilePath("选择要打开的文件", "");
+                    process.StartInfo.FileName = GetFilePath("选择要打开的文件 | Select the file you want to open", "");
 
                 }
                 else
                 {
-                    Console.WriteLine("不选择有可能导致游戏无法运行,等待后续修复");
+                    Console.WriteLine("不选择有可能导致游戏无法运行,等待后续修复 | Not selecting can result in the game not working, waiting for a later fix");
                     Console.ReadLine();
                     Environment.Exit(1);
                 };
