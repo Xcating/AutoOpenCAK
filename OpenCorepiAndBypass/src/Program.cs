@@ -259,7 +259,6 @@ namespace OpenCorepiAndBypass
                 string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
 
                 //根据服务器来选择 如果为 ys 为国服 gs为外服
-
                 if (server.Contains("ys"))
                 {
                     FileUtils.OpenFile(GamePath + @"YuanShen.exe");
