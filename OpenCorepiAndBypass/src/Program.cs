@@ -242,16 +242,16 @@ namespace OpenCorepiAndBypass
 
 
                 //处理上传错误程序
-                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "blueReporter.exe.bak",
-                    @GamePath + @"\YuanShen_Data\" + "blueReporter.exe",
+                FileUtils.ChangeFileName(@GamePath + @"\GenshinImpact_Data\" + "blueReporter.exe.bak",
+                    @GamePath + @"\GenshinImpact_Data\" + "blueReporter.exe",
                     "blueReporter.exe.bak");
 
-                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "upload_crash.exe.bak",
-                    @GamePath + @"\YuanShen_Data\" + "upload_crash.exe",
+                FileUtils.ChangeFileName(@GamePath + @"\GenshinImpact_Data\" + "upload_crash.exe.bak",
+                    @GamePath + @"\GenshinImpact_Data\" + "upload_crash.exe",
                     "upload_crash.exe.bak");
 
-                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe.bak",
-                    @GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe",
+                FileUtils.ChangeFileName(@GamePath + @"\GenshinImpact_Data\Plugins\" + "crashreport.exe.bak",
+                    @GamePath + @"\GenshinImpact_Data\Plugins\" + "crashreport.exe",
                     "crashreport.exe.bak");
 
                 //开启网络
