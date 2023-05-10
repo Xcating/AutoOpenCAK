@@ -13,7 +13,7 @@ namespace OpenCorepiAndBypass
 
     class Program
     {
-        const string VERSION = "v0.0.4";
+        const string VERSION = "v0.0.5";
 
         /// <summary>
         /// 绘制版本启动
@@ -106,12 +106,31 @@ namespace OpenCorepiAndBypass
 
             //判断是否存在配置文件
             Console.ForegroundColor = ConsoleColor.DarkGreen;
+
             //读取配置文件
             IniFile ini = new IniFile(@Environment.CurrentDirectory + @"\config.ini");
             if (ini != null)
             {
                 Console.WriteLine(rm.GetString("Conf_Success"));
             }
+
+            //获取服务器区别
+            string server = ini.ReadValue("Settings", "server");
+
+            //设置游戏data路径
+            string GameDataPathName = "";
+            if (server.Contains("ys"))
+            {
+                GameDataPathName = @"\YuanShen_Data\";
+            }
+            else if (server.Contains("gs"))
+            {
+                GameDataPathName = @"\GenshinImpact_Data\";
+            }
+
+            Console.WriteLine(rm.GetString("Server_Info")+"  "+ server);
+
+
             //账号切换器
             string genshinAccount = ini.ReadValue("Settings", "GenshinAccount");
             if (genshinAccount.Contains("true"))
@@ -190,23 +209,29 @@ namespace OpenCorepiAndBypass
                 FileUtils.ChangeFileName(@GamePath + "mhypbase.dll", @GamePath + "mhypbase.dll.bak", "mhypbase.dll");
                 FileUtils.ChangeFileName(@GamePath + "mhyprot3.Sys", @GamePath + "mhyprot3.Sys.bak", "mhyprot3.Sys");
 
+
                 //处理上传错误程序
-                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "blueReporter.exe",
-                    @GamePath + @"\YuanShen_Data\" + "blueReporter.exe.bak",
+                FileUtils.ChangeFileName(@GamePath + GameDataPathName + "blueReporter.exe",
+                    @GamePath+ GameDataPathName + "blueReporter.exe.bak",
                     "blueReporter.exe");
 
-                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\" + "upload_crash.exe",
-                    @GamePath + @"\YuanShen_Data\" + "upload_crash.exe.bak",
+                FileUtils.ChangeFileName(@GamePath + GameDataPathName + "upload_crash.exe",
+                    @GamePath + GameDataPathName + "upload_crash.exe.bak",
                     "upload_crash.exe");
 
-                FileUtils.ChangeFileName(@GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe",
-                    @GamePath + @"\YuanShen_Data\Plugins\" + "crashreport.exe.bak",
+                FileUtils.ChangeFileName(@GamePath + GameDataPathName + @"\Plugins\" + "crashreport.exe",
+                    @GamePath + GameDataPathName+@"\Plugins\" + "crashreport.exe.bak",
                     "crashreport.exe");
 
 
                 //断开网络
-                InternetUtil.OffInternet();
 
+                //判断是否断开
+                string Internet = ini.ReadValue("Settings", "Internet");
+                if (Internet.Contains("true"))
+                {
+                    InternetUtil.OffInternet();
+                }
 
                 // 暂停1秒
                 Thread.Sleep(2000);
@@ -226,6 +251,26 @@ namespace OpenCorepiAndBypass
                 Console.WriteLine(rm.GetString("Wait_Injector_Time"));
                 Thread.Sleep(20000);
             }
+            else
+            {
+                //未选择执行注入器程序
+                //直接运行游戏
+                Console.WriteLine("未选择启动注入器,直接运行原神程序");
+                string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
+
+                //根据服务器来选择 如果为 ys 为国服 gs为外服
+
+                if (server.Contains("ys"))
+                {
+                    FileUtils.OpenFile(GamePath + @"YuanShen.exe");
+                }
+                else if (server.Contains("gs"))
+                {
+                    FileUtils.OpenFile(GamePath + @"GenshinImpact.exe");
+                }
+
+
+            }
 
 
             //恢复文件操作
@@ -242,20 +287,26 @@ namespace OpenCorepiAndBypass
 
 
                 //处理上传错误程序
-                FileUtils.ChangeFileName(@GamePath + @"\GenshinImpact_Data\" + "blueReporter.exe.bak",
-                    @GamePath + @"\GenshinImpact_Data\" + "blueReporter.exe",
+                FileUtils.ChangeFileName(@GamePath + GameDataPathName + "blueReporter.exe.bak",
+                    @GamePath + GameDataPathName + "blueReporter.exe",
                     "blueReporter.exe.bak");
 
-                FileUtils.ChangeFileName(@GamePath + @"\GenshinImpact_Data\" + "upload_crash.exe.bak",
-                    @GamePath + @"\GenshinImpact_Data\" + "upload_crash.exe",
+                FileUtils.ChangeFileName(@GamePath + GameDataPathName + "upload_crash.exe.bak",
+                    @GamePath + GameDataPathName + "upload_crash.exe",
                     "upload_crash.exe.bak");
 
-                FileUtils.ChangeFileName(@GamePath + @"\GenshinImpact_Data\Plugins\" + "crashreport.exe.bak",
-                    @GamePath + @"\GenshinImpact_Data\Plugins\" + "crashreport.exe",
+                FileUtils.ChangeFileName(@GamePath + GameDataPathName + @"\Plugins\" + "crashreport.exe.bak",
+                    @GamePath+ GameDataPathName+@"\Plugins\" + "crashreport.exe",
                     "crashreport.exe.bak");
 
-                //开启网络
-                InternetUtil.OpenInternet();
+
+
+                string Internet = ini.ReadValue("Settings", "Internet");
+                if (Internet.Contains("true"))
+                {
+                    //开启网络
+                    InternetUtil.OpenInternet();
+                }
 
                 // 暂停1秒
                 Thread.Sleep(2000);
