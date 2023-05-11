@@ -64,7 +64,7 @@ namespace OpenCorepiAndBypass.src
             }
 
             //如果文件名称不包含.bak,则备份
-            if (!fileName.EndsWith(".bak"))
+            if (!fileName.EndsWith(".bak")&& !fileName.Contains("PCGameSDK"))
             {
                 File.Copy(oldName, backupFile, true);
             }

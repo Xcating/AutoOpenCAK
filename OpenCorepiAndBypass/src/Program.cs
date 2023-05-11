@@ -13,7 +13,7 @@ namespace OpenCorepiAndBypass
 
     class Program
     {
-        const string VERSION = "v0.0.5";
+        const string VERSION = "v0.0.6";
 
         /// <summary>
         /// 绘制版本启动
@@ -119,16 +119,44 @@ namespace OpenCorepiAndBypass
 
             //设置游戏data路径
             string GameDataPathName = "";
-            if (server.Contains("ys"))
+            string channelId = "";
+            //获取游戏路径
+            string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
+
+            if (server.Contains("ys") || server.Contains("bilibili"))
             {
                 GameDataPathName = @"\YuanShen_Data\";
+                //添加b服sdk,从bak获取
+                if (server.Contains("ys"))
+                {
+                    channelId = "1";
+                    //如果存在sdk,则删除
+                    File.Delete(@GamePath + GameDataPathName + @"\Plugins\" + "PCGameSDK.dll");
+
+                }
+                else
+                {
+                    channelId = "14";
+                    //如果不存在,则添加
+                    string backupDir = @Environment.CurrentDirectory + @"\bak\";
+
+                    //从bak下复制一份
+                    File.Copy(backupDir + "PCGameSDK.dll", @GamePath + GameDataPathName + @"\Plugins\" + "PCGameSDK.dll",true);
+                }
             }
             else if (server.Contains("gs"))
             {
                 GameDataPathName = @"\GenshinImpact_Data\";
             }
 
-            Console.WriteLine(rm.GetString("Server_Info")+"  "+ server);
+            //处理b服官服互转
+            //读取官方文件config.ini
+            IniFile GSini = new IniFile(@GamePath + @"\config.ini");
+            GSini.WriteValue("General", "channel", channelId);
+
+
+            Console.WriteLine(rm.GetString("Server_Info") + "  " + server);
+
 
 
             //账号切换器
@@ -179,7 +207,7 @@ namespace OpenCorepiAndBypass
                 Console.WriteLine(rm.GetString("Open_Agree") + rm.GetString("Bypass_Name"));
 
 
-                string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
+
                 Console.WriteLine(GamePath);
 
 
@@ -212,7 +240,7 @@ namespace OpenCorepiAndBypass
 
                 //处理上传错误程序
                 FileUtils.ChangeFileName(@GamePath + GameDataPathName + "blueReporter.exe",
-                    @GamePath+ GameDataPathName + "blueReporter.exe.bak",
+                    @GamePath + GameDataPathName + "blueReporter.exe.bak",
                     "blueReporter.exe");
 
                 FileUtils.ChangeFileName(@GamePath + GameDataPathName + "upload_crash.exe",
@@ -220,7 +248,7 @@ namespace OpenCorepiAndBypass
                     "upload_crash.exe");
 
                 FileUtils.ChangeFileName(@GamePath + GameDataPathName + @"\Plugins\" + "crashreport.exe",
-                    @GamePath + GameDataPathName+@"\Plugins\" + "crashreport.exe.bak",
+                    @GamePath + GameDataPathName + @"\Plugins\" + "crashreport.exe.bak",
                     "crashreport.exe");
 
 
@@ -256,10 +284,11 @@ namespace OpenCorepiAndBypass
                 //未选择执行注入器程序
                 //直接运行游戏
                 Console.WriteLine("未选择启动注入器,直接运行原神程序");
-                string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
+
+                GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
 
                 //根据服务器来选择 如果为 ys 为国服 gs为外服
-                if (server.Contains("ys"))
+                if (server.Contains("ys")|| server.Contains("bilibili"))
                 {
                     FileUtils.OpenFile(GamePath + @"YuanShen.exe");
                 }
@@ -267,7 +296,7 @@ namespace OpenCorepiAndBypass
                 {
                     FileUtils.OpenFile(GamePath + @"GenshinImpact.exe");
                 }
-
+                Thread.Sleep(20000);
 
             }
 
@@ -275,7 +304,7 @@ namespace OpenCorepiAndBypass
             //恢复文件操作
             if (ByPass.Contains("true"))
             {
-                string GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
+                GamePath = ini.ReadValue("Settings", "GamePath") + @"\";
 
                 Console.WriteLine(rm.GetString("Cahcoe_Bypass_Message"));
 
@@ -295,7 +324,7 @@ namespace OpenCorepiAndBypass
                     "upload_crash.exe.bak");
 
                 FileUtils.ChangeFileName(@GamePath + GameDataPathName + @"\Plugins\" + "crashreport.exe.bak",
-                    @GamePath+ GameDataPathName+@"\Plugins\" + "crashreport.exe",
+                    @GamePath + GameDataPathName + @"\Plugins\" + "crashreport.exe",
                     "crashreport.exe.bak");
 
 
