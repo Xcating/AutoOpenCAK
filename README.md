@@ -21,12 +21,10 @@
 
 # 用途
 
-- 绕过原神检测
-- 修复启动报错
-- 屏蔽进程保护
-- 支持一键切换国服,b服
-- 支持国际服
-- 双语支持
+- 绕过原神检测,屏蔽申报应用
+- 修复启动报错,还原游戏文件
+- 屏蔽进程保护,支持ce附加到原神
+- 支持一键切换国服,b服 支持国际服 双语支持
 - 一键启动3dm模型切换工具 [下载](https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
 - 一键启动账号更换工具 [下载](https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
 
