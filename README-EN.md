@@ -27,6 +27,8 @@ Allows you to bypass Akebi-like injector source detection, process protection, f
 - Support one-click switch between Chinese and b servers
 - Support international service
 - Bilingual support
+- a key to start 3 dm model switching tools [download] (https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
+- a key start account replacement tools [download] (https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
 
 ## How to use 
 

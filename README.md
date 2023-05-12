@@ -27,6 +27,8 @@
 - 支持一键切换国服,b服
 - 支持国际服
 - 双语支持
+- 一键启动3dm模型切换工具 [下载](https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
+- 一键启动账号更换工具 [下载](https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
 
 ## 如何使用
 
