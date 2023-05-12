@@ -30,8 +30,10 @@
 
 ## 如何使用
 
-1. 打开release下载最新版本[Releases](https://github.com/Micah123321/AutoOpenCAK/releases)
-2. 请根据自己的情况配置config.ini![](https://www.ake1.com/mkoss/2023-05-08/13583df7.png)
+1. 下载最新版本  [点我下载](https://github.com/Micah123321/AutoOpenCAK/releases/latest)
+2. 将所有文件解压
+3. 个性化配置 `config.ini` 文件
+4. 以管理员方式运行 `OpenCorepiAndBypass.exe`
 
 ## 注意事项
 
