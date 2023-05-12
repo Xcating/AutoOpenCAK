@@ -21,7 +21,7 @@ Allows you to bypass Akebi-like injector source detection, process protection, f
 
 # Use
 
-- Bypass the original God detection
+- Bypass the Genshin Impact detection
 - Fixed startup errors
 - Mask process protection
 - Support one-click switch between Chinese and b servers
