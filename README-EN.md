@@ -17,7 +17,7 @@ Allows you to bypass Akebi-like injector source detection, process protection, f
 
 # Running effect
 
-! [image](https://user-images.githubusercontent.com/76832465/236788391-98559835-a629-48e7-923b-ccdccf39f685.png)
+![image](https://user-images.githubusercontent.com/76832465/236788391-98559835-a629-48e7-923b-ccdccf39f685.png)
 
 # Use
 
@@ -27,13 +27,13 @@ Allows you to bypass Akebi-like injector source detection, process protection, f
 - Support one-click switch between Chinese and b servers
 - Support international service
 - Bilingual support
-- a key to start 3 dm model switching tools [download] (https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
-- a key start account replacement tools [download] (https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
+- a key to start 3 dm model switching tools [download](https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
+- a key start account replacement tools [download](https://github.com/Micah123321/AutoOpenCAK/releases/tag/utils)
 
 ## How to use 
 
-1. Open the release and download the latest version (Releases) (https://github.com/Micah123321/AutoOpenCAK/releases)
-2. Configure config.ini! According to your own situation. [](https://www.ake1.com/mkoss/2023-05-08/13583df7.png)
+1. Open the release and download the latest version [Releases](https://github.com/Micah123321/AutoOpenCAK/releases)
+2. Configure config.ini! According to your own situation. ![](https://www.ake1.com/mkoss/2023-05-08/13583df7.png)
 
 ## Precautions
 
