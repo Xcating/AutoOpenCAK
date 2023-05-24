@@ -8,7 +8,12 @@
 <!-- TOC -->
 # English README
 
-[English version](https://github.com/Micah123321/AutoOpenCAK/blob/main/README-EN.md)
+[en](https://github.com/Micah123321/AutoOpenCAK/blob/main/README-EN.md)
+
+---
+
+![image](https://github.com/Micah123321/AutoOpenCAK/assets/76832465/cf8591b4-a373-4e29-8c9c-6cd1a46b14d7)
+
 
 # AutoOpenCAK
 
