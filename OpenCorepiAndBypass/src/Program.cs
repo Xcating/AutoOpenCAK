@@ -53,43 +53,44 @@ namespace OpenCorepiAndBypass
         /// 获取资源管理器
         /// </summary>
         /// <returns>资源管理器</returns>
-        private static ResourceManager GetResourceManager()
+        private static ResourceManager GetResourceManager(bool faststart)
         {
 
             bool loop = true;
 
             // 使用while循环来重复执行以下代码，直到loop为false
-            while (loop)
+            if (!faststart)
             {
-                // 输出语言选择菜单
-                Console.ForegroundColor = ConsoleColor.DarkCyan;
-                Console.WriteLine("请选择语言：| Please select a language:");
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("1. 中文 | 1. Chinese");
-                Console.WriteLine("2. 英文 | 2. English");
-                Console.ResetColor();
-
-                // 读取用户输入的选择
-                string choice = Console.ReadLine();
-
-                // 使用switch语句来根据选择设置语言和退出循环
-                switch (choice)
+                while (loop)
                 {
-                    case "1":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
-                        loop = false; // 设置loop为false，退出循环
-                        break;
-                    case "2":
-                        Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
-                        loop = false; // 设置loop为false，退出循环
-                        break;
-                    default:
-                        Console.WriteLine("无效选择！| Invalid selection!");
-                        break;
+                    // 输出语言选择菜单
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                    Console.WriteLine("请选择语言：| Please select a language:");
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("1. 中文 | 1. Chinese");
+                    Console.WriteLine("2. 英文 | 2. English");
+                    Console.ResetColor();
+
+                    // 读取用户输入的选择
+                    string choice = Console.ReadLine();
+
+                    // 使用switch语句来根据选择设置语言和退出循环
+                    switch (choice)
+                    {
+                        case "1":
+                            Thread.CurrentThread.CurrentUICulture = new CultureInfo("zh-CN");
+                            loop = false; // 设置loop为false，退出循环
+                            break;
+                        case "2":
+                            Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                            loop = false; // 设置loop为false，退出循环
+                            break;
+                        default:
+                            Console.WriteLine("无效选择！| Invalid selection!");
+                            break;
+                    }
                 }
             }
-
-
             // 创建资源管理器对象
             ResourceManager rm = new System.Resources.ResourceManager("OpenCorepiAndBypass.Properties.Strings", Assembly.GetExecutingAssembly());
 
@@ -100,11 +101,19 @@ namespace OpenCorepiAndBypass
 
         static void Main(string[] args)
         {
+            //判断是否使用快速启动模式
+            bool faststart = false;
+            if (args.Contains("--faststart"))
+            {
+                faststart = true;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("开始快速启动模式 | FastStart Mode");
+            }
             //绘制版本消息
             DrawVersion();
 
             //获取资源管理器
-            ResourceManager rm = GetResourceManager();
+            ResourceManager rm = GetResourceManager(faststart);
 
             //判断是否存在配置文件
             Console.ForegroundColor = ConsoleColor.DarkGreen;
@@ -115,15 +124,9 @@ namespace OpenCorepiAndBypass
             {
                 Console.WriteLine(rm.GetString("Conf_Success"));
             }
-            //判断是否使用快速启动模式
-            bool faststart = false;
-            if (args.Contains("--faststart"))
-            {
-                faststart = true;
-                Console.ForegroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("开始快速启动模式 | FastStart Mode");
-            }
+
             
+
             //获取服务器区别
             string server = ini.ReadValue("Settings", "server");
 
