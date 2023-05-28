@@ -50,4 +50,4 @@
 
 - 如果您想要更改应用程序的启动项设置，请查看“OpenCorepiAndBypass\OpenCorepiAndBypass\src\Program.cs”文件中的代码并进行必要的更改。
 
-  ![Star History Chart](https://api.star-history.com/svg?repos=Micah123321/AutoOpenCAK&type=Date)](https://star-history.com/#Micah123321/AutoOpenCAK&Date)
+  ![Star History Chart](https://api.star-history.com/svg?repos=Micah123321/AutoOpenCAK&type=Date)
