@@ -28,7 +28,7 @@ namespace OpenCorepiAndBypass.src
                 {
 
 
-                    //判断如何oldName+.bak存在 则改为非.bak格式
+                    //判断如何oldName+.bak存在 则改为非bak格式 (还原旧名称)
                     if (File.Exists(oldName + ".bak"))
                     {
                         File.Move(oldName + ".bak", oldName);

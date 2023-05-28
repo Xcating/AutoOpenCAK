@@ -2,6 +2,7 @@
 using System;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Resources;
 using System.Threading;
@@ -45,6 +46,7 @@ namespace OpenCorepiAndBypass
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("╚══════════════════════════════════════════════════════════╝");
             Console.ResetColor();
+
         }
 
         /// <summary>
@@ -113,7 +115,15 @@ namespace OpenCorepiAndBypass
             {
                 Console.WriteLine(rm.GetString("Conf_Success"));
             }
-
+            //判断是否使用快速启动模式
+            bool faststart = false;
+            if (args.Contains("--faststart"))
+            {
+                faststart = true;
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("开始快速启动模式 | FastStart Mode");
+            }
+            
             //获取服务器区别
             string server = ini.ReadValue("Settings", "server");
 
