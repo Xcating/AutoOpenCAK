@@ -9,8 +9,7 @@
 
 <!-- TOC -->
 
-* [English README](#english-readme)
-* [AutoOpenCAK](#autoopencak)
+* [AutoOpenCAK](#)
 * [运行效果](#运行效果)
 * [用途](#用途)
   * [如何使用](#如何使用)
